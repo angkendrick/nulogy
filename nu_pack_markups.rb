@@ -1,8 +1,4 @@
-require_relative 'nu_pack_constants'
-
 module NuPackMarkups
-
-  include NuPackConstants
 
   def pax_percent(number_of_people)
     markup = 1.2
@@ -10,16 +6,7 @@ module NuPackMarkups
   end
 
   def material_percent(type)
-    case type.downcase
-      when 'food'
-        FOOD
-      when 'drugs'
-        DRUGS
-      when 'electronics'
-        ELECTRONICS
-      else
-        0
-    end
+    material.has_key?(type) ? material[type] : 0
   end
 
   def price_with_flat_markup(price)
