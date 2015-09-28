@@ -1,9 +1,9 @@
 class NuPackEstimate
 
   def calculate(base_price, number_of_people, type)
-    flat_markup = base_price + (base_price * convert_percentage(5))
-    final = flat_markup + (flat_markup * (convert_percentage(pax_percent(number_of_people)) + convert_percentage(material_percent(type))))
-    two_decimal(final)
+    flat_markup = price_with_flat_markup(base_price)
+    final_price = price_with_other_markup(flat_markup, number_of_people, type)
+    two_decimal(final_price)
   end
 
   # helpers
@@ -36,6 +36,14 @@ class NuPackEstimate
       else
         nil
     end
+  end
+
+  def price_with_flat_markup(price)
+    price + (price * convert_percentage(5))
+  end
+
+  def price_with_other_markup(price, number_of_people, type)
+    price + (price * (convert_percentage(pax_percent(number_of_people)) + convert_percentage(material_percent(type))))
   end
 
 end
