@@ -9,3 +9,5 @@ How to run Rspec tests:
 
 Included tests:
 1. nu_pack_helpers_spec.rb
+2. nu_pack_markup_values_spec.rb
+
